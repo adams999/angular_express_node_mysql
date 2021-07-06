@@ -1,0 +1,75 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: linear-gradient(70deg, rgb(0, 63, 139), #5162ff);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: white;
+}
+
+table {
+  width: 99%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.marginTable {
+  width: 99%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.sortFilter {
+  cursor: pointer;
+}
+
+.darkTest {
+  color: white;
+}
+
+.charts {
+  width: auto;
+}
+
+.chart-wrapper {
+  display: grid;
+  overflow: hidden;
+}
+
+.alignCharts {
+  float: left;
+  width: 50%;
+}
+
+.alignSearch {
+  display: -webkit-inline-box;
+  margin-left: 35%;
+  padding: 30px;
+}
+
+.alignTxtSearch {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.cabecero{
+  background-color: #e91e63;
+  padding: 5px;
+}

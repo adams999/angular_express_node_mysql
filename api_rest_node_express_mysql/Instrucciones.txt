@@ -1,0 +1,3 @@
+-Instalar Node.js
+-Ejecutar en la consola y en la ruta del proyecto (configurar la conexion de db en mi caso en localhost)
+	npm start

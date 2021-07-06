@@ -1,0 +1,117 @@
+<div class="example-container">
+  <form [formGroup]="formulario" #clienteForm="ngForm">
+    <mat-checkbox class="center" [formControl]="hideRequiredControl" ngDefaultControl
+      >Formulario de Usuario</mat-checkbox
+    ><br />
+
+    <mat-form-field
+      appearance="fill"
+      [floatLabel]="floatLabelControl.value"
+      *ngIf="InsertStatus"
+    >
+      <mat-label>Id</mat-label>
+      <input
+        matInput
+        name="id"
+        type="number"
+        [disabled]="false"
+        [value]="data.test_id"
+        formControlName="test_id"
+        [(ngModel)]="datos.test_id"
+        placeholder="Id"
+      /> </mat-form-field
+    ><br />
+
+    <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
+      <mat-label>Nombre</mat-label>
+      <input
+        matInput
+        required
+        name="nombre"
+        type="text"
+        placeholder="Ingresa el Nombre"
+        [value]="datos.test_name"
+        formControlName="test_name"
+        [(ngModel)]="datos.test_name"
+        minlength="3"
+        maxlength="100"
+      /> </mat-form-field
+    ><br />
+
+    <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
+      <mat-label>Correo</mat-label>
+      <input
+        matInput
+        required
+        name="correo"
+        type="email"
+        placeholder="Ingresa el Correo"
+        [value]="datos.test_email"
+        formControlName="test_email"
+        [(ngModel)]="datos.test_email"
+        minlength="5"
+        maxlength="50"
+      /> </mat-form-field
+    ><br />
+
+    <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
+      <mat-label>Edad</mat-label>
+      <input
+        matInput
+        required
+        name="edad"
+        type="number"
+        placeholder="Ingresa la edad"
+        [value]="datos.test_edad"
+        formControlName="test_edad"
+        [(ngModel)]="datos.test_edad"
+        minlength="1"
+        maxlength="3"
+      /> </mat-form-field
+    ><br />
+
+    <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
+      <mat-label>Estatus</mat-label>
+      <mat-select
+        [(ngModel)]="datos.test_est"
+        formControlName="test_est"
+        required
+        name="estatus"
+      >
+        <mat-option value="1" selected>{{ "Activo" }}</mat-option>
+        <mat-option value="0">{{ "Inactivo" }}</mat-option>
+      </mat-select> </mat-form-field
+    ><br />
+
+    <div class="center">
+      <button mat-icon-button color="primary">
+        <mat-icon (click)="cerrarModal()">arrow_back</mat-icon>
+      </button>
+
+      <button mat-icon-button color="info" *ngIf="InsertStatus">
+        <mat-icon (click)="eliminarRegistro()">delete</mat-icon>
+      </button>
+
+      <button
+        *ngIf="InsertStatus"
+        (click)="procesarData(clienteForm.value)"
+        mat-icon-button
+        color="warning"
+        type="submit"
+      >
+        <mat-icon>save</mat-icon>
+      </button>
+
+      <button
+        *ngIf="InsertStatus == false"
+        (click)="registroUserNew()"
+        mat-icon-button
+        color="warning"
+        type="submit"
+        
+      >
+        <mat-icon>save</mat-icon>
+      </button>
+    </div>
+  </form>
+</div>

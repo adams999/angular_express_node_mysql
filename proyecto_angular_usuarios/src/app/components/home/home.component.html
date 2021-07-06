@@ -1,0 +1,171 @@
+<app-cabecero [promedioEdad]="promEdad"></app-cabecero>
+
+<h1 class="center">Gestión de Usuarios</h1>
+<br /><br /><br />
+
+<div>
+  <div class="alignCharts">
+    <app-grafica-torta
+      flex
+      class="charts"
+      [dataChart]="dataPie"
+    ></app-grafica-torta>
+  </div>
+
+  <div class="alignCharts">
+    <app-grafica-barras
+      flex
+      class="charts"
+      [dataChart]="dataBar"
+    ></app-grafica-barras>
+  </div>
+</div>
+
+<br /><br /><br />
+
+<div class="alignSearch">
+  <div class="">
+    <br />
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <button
+        (click)="registrarUsuario()"
+        mat-fab
+        color="primary"
+        aria-label="Registrar Nuevo Usuario"
+        title="Registrar Nuevo Usuario"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-grid-list>
+  </div>
+
+  <mat-grid-list cols="2" rowHeight="2:1" cols="4" class="alignTxtSearch">
+    <mat-form-field appearance="fill">
+      <mat-label>Buscar</mat-label>
+      <input
+        matInput
+        name="search"
+        type="text"
+        placeholder="Ingresa usuario a buscar"
+        [value]="txtSearch"
+        [(ngModel)]="txtSearch"
+        minlength="3"
+        maxlength="100"
+      />
+    </mat-form-field>
+    <button
+      [disabled]="txtSearch.length == 0"
+      (click)="buscar()"
+      mat-icon-button
+      color="accent"
+      aria-label="Buscar"
+    >
+      <mat-icon>search</mat-icon>
+    </button>
+
+    <button
+      [disabled]="!search"
+      (click)="formatearSearch()"
+      mat-icon-button
+      color="accent"
+      aria-label="borrar"
+    >
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-grid-list>
+</div>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="datos">
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-icon
+          color="primary"
+          class="sortFilter"
+          (click)="ordenar('test_id')"
+          title="Ordenar"
+          >sort</mat-icon
+        >
+        Id.
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.test_id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Nombre">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-icon
+          color="primary"
+          class="sortFilter"
+          (click)="ordenar('test_name')"
+          title="Ordenar"
+          >sort</mat-icon
+        >
+        Nombre
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.test_name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Correo">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-icon
+          color="primary"
+          class="sortFilter"
+          (click)="ordenar('test_email')"
+          title="Ordenar"
+          >sort</mat-icon
+        >
+        Correo
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.test_email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Edad">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-icon
+          color="primary"
+          class="sortFilter"
+          (click)="ordenar('test_edad')"
+          title="Ordenar"
+          >sort</mat-icon
+        >
+        Edad
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.test_edad }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Accion">
+      <th mat-header-cell *matHeaderCellDef>Acción</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          title="Editar"
+          *ngIf="!session"
+          (click)="mostrarModal(element)"
+          mat-icon-button
+          color="warn"
+          aria-label="Accion"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button
+          *ngIf="session"
+          (click)="alertLogin()"
+          mat-icon-button
+          color="accent"
+          aria-label="Accion"
+        >
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    class="marginTable"
+    [pageSizeOptions]="[5, 10, 20]"
+  ></mat-paginator>
+</div>
+
+<router-outlet></router-outlet>

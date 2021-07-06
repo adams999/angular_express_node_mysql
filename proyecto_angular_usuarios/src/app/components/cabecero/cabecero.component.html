@@ -1,0 +1,46 @@
+<div class="cabecero" color="primary">
+  <button
+    mat-button
+    class="darkTest"
+    [routerLink]="['/']"
+    routerLinkActive="router-link-active"
+  >
+    <mat-icon class="sortFilter">home</mat-icon> Inicio
+  </button>
+
+  <button
+    mat-button
+    [matMenuTriggerFor]="belowMenu"
+    class="darkTest"
+    routerLinkActive="router-link-active"
+  >
+    <mat-icon class="sortFilter">people</mat-icon>
+    Usuarios
+  </button>
+  <mat-menu #belowMenu="matMenu" yPosition="below">
+    <button
+      [routerLink]="['/usuarios']"
+      routerLinkActive="router-link-active"
+      mat-menu-item
+    >
+      Administrar Usuario
+    </button>
+  </mat-menu>
+
+  <button *ngIf="session == true" mat-button class="darkTest" (click)="salir()">
+    Modificar Desactivado
+  </button>
+  <button
+    *ngIf="session == false"
+    mat-button
+    class="darkTest"
+    (click)="entrar()"
+  >
+    <mat-icon class="sortFilter">edit</mat-icon> Modificar Activado
+  </button>
+</div>
+
+<button mat-menu-item class="darkTest">
+  <b> Promedio de Edad: </b>{{ promedioEdad | number: "1.0-2" }}
+  años
+</button>
