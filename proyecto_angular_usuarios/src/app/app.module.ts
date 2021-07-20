@@ -30,7 +30,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { LoginGuardian } from './guardians/login.guardian.service';
 import { loginService } from './services/login.service';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -40,7 +39,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ModalInfoComponent,
     GraficaBarrasComponent,
     GraficaTortaComponent,
-    CabeceroComponent,
+    CabeceroComponent
   ],
   imports: [
     BrowserModule,
